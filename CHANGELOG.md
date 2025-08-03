@@ -30,3 +30,14 @@
 - Add change button to change broker
 - Add holdings table and show dummy data
 
+## [0.0.4] - 2025-08-04
+### Added
+- Add reusable table component
+- Add Orderbook and positions UI
+- Add sorting functionality in table
+- Add bottom navigation bar
+- Add navbar with logout button
+- Add ```lucide-react``` for icons
+
+### Fixed
+- Login and logout flow issues

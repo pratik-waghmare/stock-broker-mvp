@@ -1,55 +1,38 @@
 import { brokers } from "../../constants/data";
 import Input from "../../components/Input/Input";
 import { useForm } from "react-hook-form";
-import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useAuthStore } from "../../store/authStore";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
-
-const LoginUser = z.object({
-  username: z.email(),
-  password: z.string().nonempty("Password is required"),
-});
-
-type LoginUser = z.infer<typeof LoginUser>;
-
-const loginMockApi = async (payload: LoginUser) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (
-        payload.username === "admin@liquide.com" &&
-        payload.password === "liquide-pass"
-      ) {
-        resolve({
-          status: 200,
-          data: {
-            username: payload.username,
-            name: payload.username.split("@")[0],
-          },
-          message: "Logged in successfully!",
-        });
-      } else if (payload.username === "scam-admin@liquide.com") {
-        reject({ status: 400, message: "Unauthorised" });
-      } else {
-        reject({ status: 500, message: "Internal server error" });
-      }
-    }, 1000);
-  });
-};
+import { useNavigate } from "react-router-dom";
+import {
+  loginMockApi,
+  loginUserSchema,
+  type LoginUser,
+} from "../../services/authService";
+import { useEffect } from "react";
 
 const LoginPage = () => {
-  const { login, setBroker, broker } = useAuthStore();
+  const { login, setBroker, broker, userData } = useAuthStore();
+  const navigate = useNavigate();
 
-  //   const [selectedBroker, setSelectedBroker] = useState("");
+  const isLoggedIn = userData;
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/holdings");
+    }
+  }, []);
+
   const {
     formState: { errors },
     register,
     handleSubmit,
   } = useForm({
-    resolver: zodResolver(LoginUser),
+    resolver: zodResolver(loginUserSchema),
   });
 
   const loginMutation = useMutation({
@@ -57,9 +40,9 @@ const LoginPage = () => {
     mutationFn: (data: LoginUser) => loginMockApi(data),
     onSuccess: (res) => {
       login(res?.data);
-      console.log(res);
 
       toast.success(`Logged in successfully!`);
+      navigate("/holdings");
     },
     onError: (err) => {
       console.error(err);
@@ -79,7 +62,7 @@ const LoginPage = () => {
   const selectedBroker = brokers.find((item) => item.id === broker);
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="w-[100dvw] h-[100dvh] flex justify-center items-center">
       {!broker ? (
         <Card className="w-[300px] h-[300px]">
           <label className="font-bold mb-4 inline-block">
@@ -112,7 +95,9 @@ const LoginPage = () => {
         <Card className="w-[300px] min-h-[300px]">
           <form className="w-full" onSubmit={handleSubmit(onLogin)}>
             <div className="flex gap-2 items-center my-2">
-              <p className="font-semibold text-gray-500 text-[14px]">Selected Broker: </p>
+              <p className="font-semibold text-gray-500 text-[14px]">
+                Selected Broker:{" "}
+              </p>
               <div className="flex gap-1 items-center">
                 <img src={selectedBroker?.logo} className="w-[16px] h-[16px]" />
                 <span className="text-[14px] font-semibold text-gray-700">

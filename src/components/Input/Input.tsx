@@ -32,9 +32,7 @@ const Input = ({
           `${error ? "outline-red-400 border-red-400" : "border-gray-200"}`
         )}
       />
-      {error && (
-        <p className="text-red-400 text-[12px] font-normal">{error.message}</p>
-      )}
+      {error && <p className="text-red-400 text-[12px] font-normal">{error}</p>}
     </div>
   );
 };
