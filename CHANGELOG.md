@@ -25,3 +25,8 @@
 - Issue with persisting data across pages. Fixed using ```zustand/middleware```
 - Typescript issues
 
+## [0.0.3] - 2025-08-04
+### Added
+- Add change button to change broker
+- Add holdings table and show dummy data
+

@@ -19,7 +19,7 @@ const Input = ({
 }) => {
   return (
     <div className="w-full flex gap-1 flex-col items-start my-2">
-      <label htmlFor={id} className="font-semibold text-gray-500">
+      <label htmlFor={id} className="font-semibold text-gray-500 text-[14px]">
         {label}
       </label>
       <input

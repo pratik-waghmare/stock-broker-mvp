@@ -6,7 +6,7 @@ type AuthStore = {
   userData: unknown;
   login: (payload: { username: string; name: string }) => void;
   logout: () => void;
-  setBroker: (broker: string) => void;
+  setBroker: (broker: string | null) => void;
 };
 
 export const useAuthStore = create<AuthStore>()(

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import HoldingsPage from "./pages/Holdings";
 import PositionsPage from "./pages/Positions";
 import OrderbookPage from "./pages/Orderbook";
+import BottomNavbar from "./components/BottomNavbar";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/positions" element={<PositionsPage />}></Route>
         <Route path="/orderbook" element={<OrderbookPage />}></Route>
       </Routes>
+      <BottomNavbar />
     </QueryClientProvider>
   );
 }

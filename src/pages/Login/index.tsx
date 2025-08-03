@@ -85,11 +85,11 @@ const LoginPage = () => {
           <label className="font-bold mb-4 inline-block">
             Login with broker
           </label>
-          <div className="grid grid-cols-3">
+          <div className="grid gap-3 grid-cols-3">
             {brokers.map((broker) => (
               <div
                 key={broker.id}
-                className="flex gap-3 flex-col justify-center items-center h-[100px] w-[100px] cursor-pointer hover:bg-gray-100"
+                className="flex-1 flex gap-3 flex-col justify-center items-center h-[100px] cursor-pointer hover:bg-gray-100"
                 onClick={() => {
                   setBroker(broker.id);
                 }}
@@ -111,12 +111,20 @@ const LoginPage = () => {
       ) : (
         <Card className="w-[300px] min-h-[300px]">
           <form className="w-full" onSubmit={handleSubmit(onLogin)}>
-            <div className="flex gap-2 items-center">
-              <p className="font-semibold text-gray-500">Selected Broker: </p>
+            <div className="flex gap-2 items-center my-2">
+              <p className="font-semibold text-gray-500 text-[14px]">Selected Broker: </p>
               <div className="flex gap-1 items-center">
                 <img src={selectedBroker?.logo} className="w-[16px] h-[16px]" />
                 <span className="text-[14px] font-semibold text-gray-700">
                   {selectedBroker?.name}
+                </span>
+                <span
+                  className="underline text-blue-500 hover:text-blue-800 text-[12px] cursor-pointer font-semibold"
+                  onClick={() => {
+                    setBroker(null);
+                  }}
+                >
+                  Change
                 </span>
               </div>
             </div>
