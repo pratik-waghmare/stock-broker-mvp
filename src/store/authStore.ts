@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 
 type AuthStore = {
   broker: string | null;
-  userData: unknown;
+  userData: { name: string; username: string } | null;
   login: (payload: { username: string; name: string }) => void;
   logout: () => void;
   setBroker: (broker: string | null) => void;

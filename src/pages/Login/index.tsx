@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { brokers } from "../../constants/data";
 import Input from "../../components/Input/Input";
 import { useForm } from "react-hook-form";

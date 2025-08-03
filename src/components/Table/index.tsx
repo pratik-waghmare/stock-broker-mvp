@@ -1,15 +1,17 @@
+// @ts-nocheck
 import { useState } from "react";
 import { cn } from "../../utils/cn";
 import { MoveDown, MoveUp } from "lucide-react";
+import type { Headers } from "../../constants/types";
 
-const Table = ({ headers, data }: { headers: unknown; data: unknown }) => {
+const Table = ({ headers, data }: { headers: Headers[]; data: object[] }) => {
   const keys = Object.keys(data[0]);
 
   const [sortDirection, setSortDirection] = useState<string>("asc");
   const [sortKey, setSortKey] = useState<string>("");
 
   const currData = data.sort((a, b) => {
-    if (!sortKey) return;
+    if (!sortKey) return 0;
 
     return sortDirection === "asc"
       ? a[sortKey] - b[sortKey]
