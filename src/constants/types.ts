@@ -14,6 +14,7 @@ export type OrderAction = "BUY" | "SELL";
 export type OrderStatus = "FILLED" | "PARTIAL" | "PENDING" | "CANCELLED";
 
 export type OrderbookEntry = {
+  broker: "NSE" | "BSE";
   orderId: string;
   symbol: string;
   action: OrderAction;

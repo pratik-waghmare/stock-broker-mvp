@@ -1,3 +1,5 @@
+import type { OrderbookEntry } from "./types";
+
 export const brokers = [
   {
     id: "1",
@@ -137,6 +139,7 @@ export const holdings = [
 
 export const orderbookHeaders = [
   { label: "Order ID", key: "orderId" },
+  { label: "Broker", key: "broker" },
   { label: "Symbol", key: "symbol" },
   { label: "Action", key: "action" },
   { label: "Quantity", key: "quantity" },
@@ -145,9 +148,10 @@ export const orderbookHeaders = [
   { label: "Time", key: "time" },
 ];
 
-export const orderbook = [
+export const orderbook: OrderbookEntry[] = [
   {
     orderId: "ORD123",
+    broker: "NSE",
     symbol: "RELIANCE",
     action: "BUY",
     quantity: 10,
@@ -157,6 +161,7 @@ export const orderbook = [
   },
   {
     orderId: "ORD124",
+    broker: "BSE",
     symbol: "HDFC",
     action: "SELL",
     quantity: 5,

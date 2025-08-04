@@ -20,13 +20,13 @@ const BottomNavbar = () => {
           key={route.path}
           className={cn(
             "text-[14px] md:text-[16px] flex-1 h-[50px] md:h-[50px] flex justify-center items-center cursor-pointer font-normal",
-            `${pathname === route.path ? "font-semibold" : "bg-gray-50"}`
+            `${pathname === route.path ? "font-semibold bg-white" : "bg-gray-50"}`
           )}
           onClick={() => {
             navigate(route.path);
           }}
         >
-          {route.title}
+          <p>{route.title}</p>
         </div>
       ))}
     </div>

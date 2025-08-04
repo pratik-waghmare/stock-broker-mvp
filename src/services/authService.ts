@@ -1,3 +1,4 @@
+import { holdings } from "@/constants/data";
 import z from "zod";
 
 export const loginUserSchema = z.object({
@@ -30,6 +31,19 @@ export const loginMockApi = async (payload: LoginUser) => {
       } else {
         reject({ status: 500, message: "Internal server error" });
       }
-    }, 1000);
+    }, 3000);
+  });
+};
+
+export const holdingsMockApi = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        status: 200,
+        data: {
+          holdings,
+        },
+      });
+    }, 2000);
   });
 };

@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useAuthStore } from "../../store/authStore";
-import Button from "../../components/Button";
+// import Button from "../../components/Button";
 import Card from "../../components/Card";
 import { useNavigate } from "react-router-dom";
 import {
@@ -15,6 +15,8 @@ import {
   type LoginUser,
 } from "../../services/authService";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Loader2Icon } from "lucide-react";
 
 const LoginPage = () => {
   const { login, setBroker, broker, userData } = useAuthStore();
@@ -54,11 +56,8 @@ const LoginPage = () => {
   const { isPending } = loginMutation;
 
   const onLogin = (data: LoginUser) => {
-    // console.log("data: ", data);
     loginMutation.mutate(data);
   };
-
-  //   console.log("errors: ", errors);
 
   const selectedBroker = brokers.find((item) => item.id === broker);
 
@@ -128,7 +127,19 @@ const LoginPage = () => {
               register={register("password")}
               error={errors?.["password"]?.message}
             />
-            <Button disabled={isPending} label={"Login"} />
+            <Button
+              disabled={isPending}
+              className="w-full bg-indigo-950 text-white mt-3"
+            >
+              {isPending ? (
+                <>
+                  <Loader2Icon className="animate-spin" />
+                  <>Logging in</>
+                </>
+              ) : (
+                "Login"
+              )}
+            </Button>
           </form>
         </Card>
       )}

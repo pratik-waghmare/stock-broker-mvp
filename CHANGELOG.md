@@ -41,3 +41,12 @@
 
 ### Fixed
 - Login and logout flow issues
+
+## [0.0.5] - 2025-08-05
+### Added
+- Add movable buy/sell form
+- Update orderbook depending on buy sell orders
+- Add popover menu to buy/sell in holdings and positions
+
+### Fixed
+- Login and logout flow issues

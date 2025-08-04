@@ -9,12 +9,16 @@ import PositionsPage from "./pages/Positions";
 import OrderbookPage from "./pages/Orderbook";
 import BottomNavbar from "./components/BottomNavbar";
 import Navbar from "./components/Navbar";
+import DraggableForm from "./Form";
+import { useOrderStore } from "./store/orderStore";
 
 // Create a client
 const queryClient = new QueryClient();
 
 function App() {
   const { userData } = useAuthStore();
+  const { action, payload } = useOrderStore();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -41,6 +45,7 @@ function App() {
         {isLoggedIn ? (
           <>
             <Navbar />
+            <DraggableForm action={action} payload={payload} />
             <BottomNavbar />
           </>
         ) : (

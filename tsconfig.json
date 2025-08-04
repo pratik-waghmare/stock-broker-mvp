@@ -6,6 +6,10 @@
   ],
   "compilerOptions": {
     "skipLibCheck": true,
-    "noEmitOnError": false // Allow build even with errors
+    "noEmitOnError": false, // Allow build even with errors
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
