@@ -76,7 +76,7 @@ const DraggableForm = ({ action, payload }: AddOrderPayload) => {
     <Draggable handle=".drag-handle" nodeRef={nodeRef}>
       <div ref={nodeRef} className="fixed bottom-0 right-0 md:right-20 z-50">
         <Card className="p-0 bg-white rounded-[8px] overflow-auto">
-          <form onSubmit={handleSubmit(onSubmitOrder)} className="w-[100dvw] md:min-w-[300px]">
+          <form onSubmit={handleSubmit(onSubmitOrder)} className="w-[100dvw] md:w-auto md:min-w-[300px]">
             <div
               className={cn(
                 "drag-handle cursor-move w-full py-2 px-5 border-[1px] rounded-t-[8px] bg-gray-50",
