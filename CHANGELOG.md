@@ -50,3 +50,9 @@
 
 ### Fixed
 - Login and logout flow issues
+
+## [0.0.6] - 2025-08-07
+### Added
+- Add ```vitest``` for testing
+- Write unit tests for ```LoginForm```
+

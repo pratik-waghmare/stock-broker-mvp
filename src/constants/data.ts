@@ -1,5 +1,11 @@
 import type { OrderbookEntry } from "./types";
 
+export interface Broker {
+  id: string;
+  name: string;
+  logo: string;
+}
+
 export const brokers = [
   {
     id: "1",
